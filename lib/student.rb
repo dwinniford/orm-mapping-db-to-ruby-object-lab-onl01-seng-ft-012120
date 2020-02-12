@@ -64,14 +64,14 @@ class Student
     end 
   end 
   
-   def self.find_by_name(name)
+   def self.first_student_in_grade_10
     sql = <<-SQL
       SELECT *
       FROM students 
-      WHERE name = ?
+      WHERE grade = 10
       LIMIT 1 
     SQL
-    row = DB[:conn].execute(sql, name).first 
+    row = DB[:conn].execute(sql).first 
     self.new_from_db(row)
   end
   
